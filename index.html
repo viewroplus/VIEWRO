@@ -298,7 +298,7 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0);
             color: white;
             border-radius: 50%;
             font-size: 1.3rem;
@@ -926,15 +926,17 @@
             margin-top: 30px;
         }
 
-        /* Testimonials Section */
+        /* Testimonials Section - UPDATED */
         #testimonials {
             position: relative;
+            background: var(--light);
         }
 
         .testimonials-container {
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
+            overflow: hidden;
         }
 
         .testimonial-slider {
@@ -942,15 +944,16 @@
             transition: transform 0.5s ease;
         }
 
-        .testimonial {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin: 0 15px;
-            min-width: calc(100% - 30px);
-            text-align: center;
-        }
+           .testimonial {
+    background: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin: 0 15px;
+    width: 60%;   /* min-width epa, meka ganna */
+    text-align: center;
+    flex-shrink: 0;
+}
 
         .testimonial-text {
             font-size: 1.1rem;
@@ -1007,6 +1010,62 @@
         .client-details p {
             margin-bottom: 0;
             color: var(--text-light);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .testimonial-nav-arrows {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            pointer-events: none;
+        }
+
+        .testimonial-prev, .testimonial-next {
+            background: rgba(255,255,255,0.8);
+            color: var(--primary);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: all;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-prev:hover, .testimonial-next:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
         }
 
         /* Contact Section */
@@ -1226,6 +1285,11 @@
             .gallery-collage {
                 height: 500px;
             }
+            
+            .testimonial {
+                min-width: calc(100% - 20px);
+                margin: 0 10px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1318,6 +1382,37 @@
                 height: 40px;
                 font-size: 1.8rem;
             }
+            
+            /* Testimonials mobile styles */
+            .testimonial {
+                padding: 30px 20px;
+                margin: 0 10px;
+                min-width: calc(100% - 20px);
+            }
+            
+            .testimonial-text {
+                font-size: 1rem;
+            }
+            
+            .testimonial-nav-arrows {
+                padding: 0 10px;
+            }
+            
+            .testimonial-prev, .testimonial-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .client-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .client-avatar {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1372,6 +1467,38 @@
             
             .video-lightbox-content iframe {
                 height: 250px;
+            }
+            
+            /* Testimonials mobile styles */
+            .testimonial {
+                padding: 25px 15px;
+            }
+            
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+            
+            .testimonial-text::before,
+            .testimonial-text::after {
+                font-size: 2rem;
+            }
+            
+            .testimonial-text::before {
+                top: -10px;
+                left: -5px;
+            }
+            
+            .testimonial-text::after {
+                bottom: -30px;
+                right: -5px;
+            }
+            
+            .testimonial-nav-arrows {
+                display: none;
+            }
+            
+            .testimonial-nav {
+                margin-top: 20px;
             }
         }
     </style>
@@ -1940,7 +2067,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - UPDATED -->
     <section id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -1963,6 +2090,79 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            The commercial video VIWERO produced for our brand exceeded all expectations. Their attention to detail and creative approach helped us connect with our audience in a meaningful way. We've seen a significant increase in engagement since the campaign launched.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                            </div>
+                            <div class="client-details">
+                                <h4>Michael Chen</h4>
+                                <p>Marketing Director, TechCorp</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            As a musician, finding the right team to produce my music video was crucial. VIWERO understood my vision completely and brought it to life in ways I couldn't have imagined. The final product was even better than I hoped for.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Rodriguez">
+                            </div>
+                            <div class="client-details">
+                                <h4>Elena Rodriguez</h4>
+                                <p>Musician & Artist</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            We've worked with VIWERO on multiple corporate events, and they consistently deliver exceptional results. Their team is professional, punctual, and the quality of their work is outstanding. They've become our go-to for all our visual content needs.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="David Thompson">
+                            </div>
+                            <div class="client-details">
+                                <h4>David Thompson</h4>
+                                <p>Event Manager, Global Events Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            The product photography VIWERO created for our e-commerce store has significantly boosted our conversion rates. Their ability to showcase products in the best light while maintaining authenticity is remarkable. Highly recommended!
+                        </div>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Priya Sharma">
+                            </div>
+                            <div class="client-details">
+                                <h4>Priya Sharma</h4>
+                                <p>Founder, Artisan Crafts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-nav-arrows">
+                    <button class="testimonial-prev" id="testimonialPrev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-next" id="testimonialNext"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
+                    <span class="testimonial-dot" data-index="3"></span>
+                    <span class="testimonial-dot" data-index="4"></span>
                 </div>
             </div>
         </div>
@@ -2514,6 +2714,91 @@
                 closeVideoLightbox();
             }
         });
+
+        // Testimonials Slider Functionality
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        const testimonialPrev = document.getElementById('testimonialPrev');
+        const testimonialNext = document.getElementById('testimonialNext');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const testimonials = document.querySelectorAll('.testimonial');
+        
+        let currentTestimonial = 0;
+        const totalTestimonials = testimonials.length;
+        
+        function updateTestimonialSlider() {
+            const slideWidth = testimonials[0].offsetWidth + 30; // 30px for margin
+            testimonialSlider.style.transform = `translateX(-${currentTestimonial * slideWidth}px)`;
+            
+            // Update dots
+            testimonialDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentTestimonial);
+            });
+        }
+        
+        testimonialPrev.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+            updateTestimonialSlider();
+        });
+        
+        testimonialNext.addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            updateTestimonialSlider();
+        });
+        
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = parseInt(dot.getAttribute('data-index'));
+                updateTestimonialSlider();
+            });
+        });
+        
+        // Auto slide testimonials
+        let testimonialInterval = setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+            updateTestimonialSlider();
+        }, 5000);
+        
+        // Pause auto slide on hover
+        const testimonialsSection = document.getElementById('testimonials');
+        testimonialsSection.addEventListener('mouseenter', () => {
+            clearInterval(testimonialInterval);
+        });
+        
+        testimonialsSection.addEventListener('mouseleave', () => {
+            testimonialInterval = setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                updateTestimonialSlider();
+            }, 5000);
+        });
+        
+        // Touch swipe for testimonials on mobile
+        let touchStartXTestimonial = 0;
+        let touchEndXTestimonial = 0;
+        
+        testimonialSlider.addEventListener('touchstart', (e) => {
+            touchStartXTestimonial = e.changedTouches[0].screenX;
+        });
+        
+        testimonialSlider.addEventListener('touchend', (e) => {
+            touchEndXTestimonial = e.changedTouches[0].screenX;
+            handleTestimonialSwipe();
+        });
+        
+        function handleTestimonialSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchEndXTestimonial - touchStartXTestimonial;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe right - previous testimonial
+                    currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+                } else {
+                    // Swipe left - next testimonial
+                    currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                }
+                updateTestimonialSlider();
+            }
+        }
     </script>
 </body>
 </html>
