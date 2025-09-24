@@ -1,0 +1,2519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIWERO - Creative Photography & Videography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary: #2c3e50;
+            --accent: #f39c12;
+            --light: #f9f9f9;
+            --dark: #222;
+            --text: #333;
+            --text-light: #777;
+            --gradient: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+            --gradient-dark: linear-gradient(135deg, #c0392b 0%, #d35400 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-dark);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--dark);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            url('image/desctop cover3.png') no-repeat center center;            
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255,255,255,0.8);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .hero-btns {
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.1s forwards;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline::before {
+            background: white;
+        }
+
+        .btn-outline:hover {
+            color: var(--dark);
+        }
+
+        /* Social Media Icons in Hero Section */
+        .hero-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.4s forwards;
+        }
+
+        .hero-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .hero-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        #about {
+            background: var(--light);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .about-text h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .about-image:hover .image-overlay {
+            opacity: 0.2;
+        }
+
+        /* Gallery Section - NEW DESIGN */
+        #gallery {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Collage Layout */
+        .gallery-collage {
+            width: 100%;
+            height: 700px;
+            position: relative;
+            transform-origin: top left;
+            box-shadow: 0 12px 40px rgba(10,20,30,0.08);
+            border-radius: 14px;
+            overflow: hidden;
+            background: #fff;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: absolute;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(20,30,40,0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Gallery item positions (left, top, width, height) in percentages */
+        .g1 { left: 3.5%; top: 4%; width: 18%; height: 20%; }
+        .g2 { left: 24%; top: 4%; width: 12%; height: 20%; }
+        .g3 { left: 40%; top: 4%; width: 55%; height: 62%; }
+        .g4 { left: 3.5%; top: 30%; width: 36%; height: 34%; }
+        .g5 { left: 46%; top: 68%; width: 18%; height: 18%; }
+        .g6 { left: 66%; top: 68%; width: 12%; height: 18%; }
+        .g7 { left: 3.5%; top: 68%; width: 16%; height: 18%; }
+        .g8 { left: 21%; top: 68%; width: 12%; height: 18%; }
+        .g9 { left: 34%; top: 68%; width: 10%; height: 18%; }
+        .g10 { left: 46%; top: 44%; width: 26%; height: 22%; }
+
+        /* Gallery overlay and caption */
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: white;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-caption p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0;
+        }
+
+        /* Lightbox Modal - IMPROVED FOR MOBILE */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-caption {
+            width: 100%;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 15px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 2001;
+        }
+
+        .lightbox-prev, .lightbox-next {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Services Section */
+        #services {
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--gradient);
+            transition: height 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            color: white;
+        }
+
+        .service-card:hover .service-icon,
+        .service-card:hover h3,
+        .service-card:hover p,
+        .service-card:hover li {
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover .service-features li::before {
+            color: white;
+        }
+
+        /* Portfolio Section - UPDATED */
+        #portfolio {
+            background: var(--light);
+            position: relative;
+        }
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            margin: 0 5px 10px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* NEW PORTFOLIO GRID - MATCHING VLOGS STYLE */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-media {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-media iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-card.hidden {
+            display: none;
+        }
+
+        .portfolio-btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Team Section */
+        #team {
+            position: relative;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .member-info .position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .member-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Vlogs Section */
+        #vlogs {
+            background: var(--light);
+            position: relative;
+        }
+
+        .vlogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .vlog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .vlog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .vlog-card.expanded {
+            grid-column: 1 / -1;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 10;
+        }
+
+        .vlog-video {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vlog-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .vlog-info {
+            padding: 25px;
+        }
+
+        .vlog-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .vlog-info p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .vlog-card.hidden {
+            display: none;
+        }
+
+        .vlogs-btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            position: relative;
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 0 15px;
+            min-width: calc(100% - 30px);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid var(--primary);
+        }
+
+        .client-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .client-details h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .client-details p {
+            margin-bottom: 0;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--light);
+            position: relative;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about .logo {
+            color: white;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .gallery-collage {
+                height: 600px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-text h2 {
+                text-align: center;
+            }
+            
+            .about-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .vlog-card.expanded {
+                max-width: 95%;
+            }
+            
+            .gallery-collage {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.4s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .portfolio-grid,
+            .vlogs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .vlog-card.expanded {
+                grid-column: 1;
+            }
+            
+            .gallery-collage {
+                height: 400px;
+            }
+            
+            /* Mobile-specific lightbox styles */
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+            
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+            
+            .lightbox-prev, .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .lightbox-caption {
+                padding: 10px;
+            }
+            
+            .video-lightbox-content iframe {
+                height: 300px;
+            }
+            
+            .video-lightbox-close {
+                top: -30px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-btns .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                max-width: 250px;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .hero-social a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .gallery-collage {
+                height: 300px;
+            }
+            
+            /* Mobile-specific lightbox styles */
+            .lightbox-content {
+                max-width: 98%;
+                max-height: 98%;
+            }
+            
+            .lightbox-content img {
+                max-height: 70vh;
+            }
+            
+            .video-lightbox-content iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#hero" class="logo">VI<span>WERO</span></a>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#vlogs">Our Vlogs</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Capturing Life's Most Precious Moments</h1>
+                <p>Professional photography, videography, and music production services that transform your vision into timeless creations.</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn">View Our Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/15551234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+                <p>VIWERO was founded with a passion for creative storytelling. We blend artistic vision with technical excellence to create visuals and sounds that resonate with emotion and authenticity.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Creating Visual & Audio Stories Since 2015</h2>
+                    <p>At VIWERO, we believe that every moment tells a story. Our journey began with a simple camera and a big dream - to capture the beauty, emotion, and authenticity of life's most precious moments.</p>
+                    <p>Today, we're a team of dedicated professionals specializing in photography, videography, and music production services for weddings, corporate events, commercial projects, and personal milestones.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1500+</span>
+                            <span class="stat-text">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-text">Client Satisfaction</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-text">Industry Awards</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-text">Creative Professionals</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                   <img src="image/TEAMCOVER.jpg" alt="VIWERO Team">
+
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - NEW DESIGN -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Gallery</h2>
+                <p>A visual journey through our most memorable projects and creative moments.</p>
+            </div>
+            <div class="gallery-collage">
+                <div class="gallery-item g1" data-index="0">
+                    <img src="image/Gallery4.jpg" alt="Product Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Portrait Session</h3>
+                            <p>Creative portrait photography in natural light</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g2" data-index="1">
+                    <img src="image/Gallery10.jpg" alt="Wedding Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Wedding Day</h3>
+                            <p>Capturing the magic of a beautiful ceremony</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g3" data-index="2">
+                    <img src="image/Gallery2.jpg" alt="Commercial Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Commercial Shoot</h3>
+                            <p>Brand campaign for a luxury fashion label</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g4" data-index="3">
+                    <img src="image/Gallery9.jpg" alt="Music Production">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Studio Session</h3>
+                            <p>Recording and producing original music</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g5" data-index="4">
+                    <img src="image/Gallery7.jpg" alt="Event Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Corporate Event</h3>
+                            <p>Documenting a major product launch</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g6" data-index="5">
+                    <img src="image/Gallery1.jpg" alt="Wedding Details">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Wedding Details</h3>
+                            <p>Capturing the intricate details of a special day</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g7" data-index="6">
+                    <img src="image/Gallery8.jpg" alt="Videography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Film Production</h3>
+                            <p>Creating cinematic content for clients</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g8" data-index="7">
+                    <img src="image/Gallery7.jpg" alt="Drone Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Aerial Views</h3>
+                            <p>Stunning drone photography of landscapes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item g9" data-index="8">
+                    <img src="image/Gallery6.jpg" alt="Product Photography">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h3>Product Showcase</h3>
+                            <p>Professional product photography for e-commerce</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+       <!-- Lightbox Modal - IMPROVED FOR MOBILE -->
+    <div class="lightbox" id="lightbox" style="display: none;">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Lightbox Modal -->
+    <div class="video-lightbox" id="videoLightbox" style="display: none;">
+        <button class="video-lightbox-close" id="videoLightboxClose">&times;</button>
+        <div class="video-lightbox-content">
+            <iframe id="videoLightboxIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of photography, videography, and music production services tailored to meet your unique needs and vision.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Photography</h3>
+                    <p>Capturing moments with artistic vision and technical excellence.</p>
+                    <ul class="service-features">
+                        <li>Wedding Photography</li>
+                        <li>Portrait Sessions</li>
+                        <li>Product Photography</li>
+                        <li>Lifestyle Photography</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Videography</h3>
+                    <p>Bringing stories to life through motion and sound.</p>
+                    <ul class="service-features">
+                        <li>Event Videography</li>
+                        <li>Corporate Films</li>
+                        <li>Short Ads</li>
+                        <li>Drone Videography</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Commercial</h3>
+                    <p>Professional visual solutions for businesses and brands.</p>
+                    <ul class="service-features">
+                        <li>Advertising Photography</li>
+                        <li>Branding Photography</li>
+                        <li>Corporate Events</li>
+                        <li>Product Launches</li>
+                    </ul>
+                </div>
+                
+                <!-- New Music Production Service Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music Production</h3>
+                    <p>Creating original soundtracks and audio experiences.</p>
+                    <ul class="service-features">
+                        <li>Original Soundtracks</li>
+                        <li>Audio Mixing & Mastering</li>
+                        <li>Sound Design</li>
+                        <li>Audio Branding</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section - UPDATED -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio</h2>
+                <p>Explore our collection of work that showcases our passion for visual and audio storytelling.</p>
+            </div>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="photography">Photography</button>
+                <button class="filter-btn" data-filter="videography">Videography</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="landscape">Landscape</button>
+                <button class="filter-btn" data-filter="music">Music</button>
+                <button class="filter-btn" data-filter="product-photography">Product Photography</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Photography Item -->
+                <div class="portfolio-card" data-category="photography">
+                    <div class="portfolio-media">
+                        <img src="image/banner.jpg" alt="Tyni Amaya Photography">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Tyni Amaya</h3>
+                        <p>Creative portrait photography session</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+                
+                <!-- Videography Item -->
+                <div class="portfolio-card" data-category="videography">
+                    <div class="portfolio-media">
+                        <iframe src="https://www.youtube.com/embed/sEogomkxAKQ?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Perahera Shoot</h3>
+                        <p>Documenting the cultural festival</p>
+                    </div>
+                </div>
+                
+                <!-- Commercial Item -->
+                <div class="portfolio-card" data-category="commercial">
+                    <div class="portfolio-media">
+                        <iframe src="https://www.youtube.com/embed/baKFbQwmNXs?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Shop Store</h3>
+                        <p>Commercial video for retail store</p>
+                    </div>
+                </div>
+                
+                <!-- Events Item -->
+                <div class="portfolio-card" data-category="events">
+                    <div class="portfolio-media">
+                        <img src="image/banner.jpg.jpg" alt="Cricket Match Event">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Cricket Match</h3>
+                        <p>Event photography at the stadium</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+                
+                <!-- Landscape Item -->
+                <div class="portfolio-card" data-category="landscape">
+                    <div class="portfolio-media">
+                        <img src="image/banner.jpg.jpg" alt="Hotel Landscape">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Hotel</h3>
+                        <p>Landscape photography of luxury hotel</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+                
+                <!-- Music Item -->
+                <div class="portfolio-card" data-category="music">
+                    <div class="portfolio-media">
+                        <iframe src="https://www.youtube.com/embed/baKFbQwmNXs?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Cover</h3>
+                        <p>Music video production</p>
+                    </div>
+                </div>
+                
+                <!-- Product Photography Item -->
+                <div class="portfolio-card" data-category="product-photography">
+                    <div class="portfolio-media">
+                        <img src="image/banner.jpg.jpg" alt="Product Photography">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Product Photography</h3>
+                        <p>Professional product photography for e-commerce</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+                
+                <!-- Hidden portfolio cards -->
+                <div class="portfolio-card hidden" data-category="photography">
+                    <div class="portfolio-media">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="Wedding Photography">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Wedding Photography</h3>
+                        <p>Beautiful wedding moments captured</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card hidden" data-category="videography">
+                    <div class="portfolio-media">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Documentary</h3>
+                        <p>Short documentary film production</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card hidden" data-category="commercial">
+                    <div class="portfolio-media">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80" alt="Commercial Photography">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Product Campaign</h3>
+                        <p>Commercial photography for product launch</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card hidden" data-category="product-photography">
+                    <div class="portfolio-media">
+                        <img src="image/banner.jpg.jpg" alt="Product Photography">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Product Showcase</h3>
+                        <p>Professional product photography for e-commerce</p>
+                        <button class="btn view-shoot-btn" data-images='["image/12.jpg", "image/11.jpg", "image/9.jpg", "image/6.jpg", "image/5.jpg"]'>View Shoot</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-btn-container">
+                <button id="seeMorePortfolio" class="btn">View More Portfolio</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Meet the talented individuals behind VIWERO who bring creativity and expertise to every project.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Ometh Withmal">
+                    </div>
+                    <div class="member-info">
+                        <h3>Ometh Withmal</h3>
+                        <span class="position">Photographer / Retoucher</span>
+                        <p>Ometh brings stories to life through stunning photography and meticulous retouching, with a keen eye for detail and a passion for visual storytelling.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sadeesha Nimsara">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sadeesha Nimsara</h3>
+                        <span class="position">Videographer / Editor</span>
+                        <p>Sadeesha crafts cinematic videos with seamless editing, transforming concepts into engaging visual narratives for brands worldwide.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sahan Nandika">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sahan Nandika</h3>
+                        <span class="position">Drone Operator / Photographer</span>
+                        <p>Sahan captures breathtaking aerial footage and dynamic photography, adding a unique perspective to every creative project.</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Vikum Prabash">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vikum Prabash</h3>
+                        <span class="position">Audio Maker</span>
+                        <p>Vikum creates immersive soundscapes, enhancing videos with high-quality audio that elevates the viewer's experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vlogs Section -->
+    <section id="vlogs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Vlogs</h2>
+                <p>Discover behind-the-scenes content, tutorials, and creative insights from our team.</p>
+            </div>
+            <div class="vlogs-grid">
+                <div class="vlog-card" data-video="qsRqY1uOD3o">
+                    <div class="vlog-video">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="vlog-info">
+                        <h3>Behind the Scenes: Commercial Shoot</h3>
+                        <p>Join us on set as we create a stunning commercial for one of our clients.</p>
+                    </div>
+                </div>
+                
+                <div class="vlog-card" data-video="qsRqY1uOD3o">
+                    <div class="vlog-video">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="vlog-info">
+                        <h3>Music Video Production Process</h3>
+                        <p>See how we bring music to life through creative video production.</p>
+                    </div>
+                </div>
+                
+                <div class="vlog-card" data-video="qsRqY1uOD3o">
+                    <div class="vlog-video">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="vlog-info">
+                        <h3>Event Highlights: Behind the Camera</h3>
+                        <p>Get a glimpse of how we capture the energy of live events.</p>
+                    </div>
+                </div>
+                
+                <!-- Hidden vlog cards -->
+                <div class="vlog-card hidden" data-video="qsRqY1uOD3o">
+                    <div class="vlog-video">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="vlog-info">
+                        <h3>Wedding Photography Tips</h3>
+                        <p>Learn how to capture the perfect moments on a wedding day with our expert tips.</p>
+                    </div>
+                </div>
+                
+                <div class="vlog-card hidden" data-video="qsRqY1uOD3o">
+                    <div class="vlog-video">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="vlog-info">
+                        <h3>Video Editing Workflow</h3>
+                        <p>Follow Sadeesha's step-by-step process for creating cinematic videos.</p>
+                    </div>
+                </div>
+                
+                <div class="vlog-card hidden" data-video="qsRqY1uOD3o">
+                    <div class="vlog-video">
+                        <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="vlog-info">
+                        <h3>Drone Photography Basics</h3>
+                        <p>Sahan explains the fundamentals of drone operation and how to capture stunning aerial shots.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vlogs-btn-container">
+                <button id="seeMoreVlogs" class="btn">View More Vlogs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our clients have to say about their experience working with VIWERO.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            VIWERO captured our wedding day perfectly! The photos are stunning and truly reflect the emotions of the day. Their team was professional, creative, and made us feel so comfortable throughout the entire process.
+                        </div>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div class="client-details">
+                                <h4>Sarah Johnson</h4>
+                                <p>Wedding Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to bring your creative vision to life? Contact us today to discuss your photography, videography, or music production needs.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Service Interested In</option>
+                                <option value="photography">Photography</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="videography">Videography</option>
+                                <option value="music-production">Music Production</option>
+                                <option value="product-photography">Product Photography</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Studio Address</h3>
+                            <p>123 Creative Lane, Arts District<br>Cityville, ST 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone Number</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email Address</h3>
+                            <p>hello@viwero.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Business Hours</h3>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#hero" class="logo">VI<span>WERO</span></a>
+                    <p>Capturing moments with creativity and precision. Professional photography, videography, and music production services for all occasions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-soundcloud"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#vlogs">Our Vlogs</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Wedding Photography</a></li>
+                        <li><a href="#">Commercial Projects</a></li>
+                        <li><a href="#">Corporate Events</a></li>
+                        <li><a href="#">Videography</a></li>
+                        <li><a href="#">Music Production</a></li>
+                        <li><a href="#">Product Photography</a></li>
+                        <li><a href="#">Sound Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Creative Lane, Cityville</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> hello@viwero.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 VIWERO. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Portfolio See More functionality
+        const seeMorePortfolioBtn = document.getElementById('seeMorePortfolio');
+        const hiddenPortfolioCards = document.querySelectorAll('.portfolio-card.hidden');
+        let portfolioVisible = false;
+        
+        seeMorePortfolioBtn.addEventListener('click', () => {
+            if (!portfolioVisible) {
+                hiddenPortfolioCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+                seeMorePortfolioBtn.textContent = 'View Less Portfolio';
+                portfolioVisible = true;
+            } else {
+                hiddenPortfolioCards.forEach(card => {
+                    card.classList.add('hidden');
+                });
+                seeMorePortfolioBtn.textContent = 'View More Portfolio';
+                portfolioVisible = false;
+            }
+        });
+        
+        // Vlogs See More functionality
+        const seeMoreVlogsBtn = document.getElementById('seeMoreVlogs');
+        const hiddenVlogs = document.querySelectorAll('.vlog-card.hidden');
+        let vlogsVisible = false;
+        
+        seeMoreVlogsBtn.addEventListener('click', () => {
+            if (!vlogsVisible) {
+                hiddenVlogs.forEach(vlog => {
+                    vlog.classList.remove('hidden');
+                });
+                seeMoreVlogsBtn.textContent = 'View Less Vlogs';
+                vlogsVisible = true;
+            } else {
+                hiddenVlogs.forEach(vlog => {
+                    vlog.classList.add('hidden');
+                });
+                seeMoreVlogsBtn.textContent = 'View More Vlogs';
+                vlogsVisible = false;
+            }
+        });
+        
+        // Simple form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .portfolio-card, .stat-item, .team-member, .vlog-card, .gallery-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        window.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.service-card, .portfolio-card, .stat-item, .team-member, .vlog-card, .gallery-item');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            // Trigger once on load in case elements are already in view
+            animateOnScroll();
+        });
+
+        // Gallery Lightbox Functionality - IMPROVED FOR MOBILE
+        const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDescription = document.getElementById('lightboxDescription');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    // Gallery data for lightbox
+    const galleryData = [
+        {
+            src: "image/Gallery9.jpg",
+            title: "Portrait Session",
+            description: "Creative portrait photography in natural light"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Wedding Day",
+            description: "Capturing the magic of a beautiful ceremony"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Commercial Shoot",
+            description: "Brand campaign for a luxury fashion label"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Studio Session",
+            description: "Recording and producing original music"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Corporate Event",
+            description: "Documenting a major product launch"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Wedding Details",
+            description: "Capturing the intricate details of a special day"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Film Production",
+            description: "Creating cinematic content for clients"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Aerial Views",
+            description: "Stunning drone photography of landscapes"
+        },
+        {
+            src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
+            title: "Product Showcase",
+            description: "Professional product photography for e-commerce"
+        }
+    ];
+    
+    // Open lightbox with specific image
+    function openLightbox(index) {
+        currentIndex = index;
+        lightboxImage.src = galleryData[index].src;
+        lightboxTitle.textContent = galleryData[index].title;
+        lightboxDescription.textContent = galleryData[index].description;
+        lightbox.style.display = 'flex';
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+    
+    // Close lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+    
+    // Navigate to previous image
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+        openLightbox(currentIndex);
+    }
+    
+    // Navigate to next image
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % galleryData.length;
+        openLightbox(currentIndex);
+    }
+    
+    // Add event listeners to gallery items
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            openLightbox(index);
+        });
+    });
+    
+    // Add event listeners to lightbox controls
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', prevImage);
+    lightboxNext.addEventListener('click', nextImage);
+    
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        }
+    });
+    
+    // Touch swipe functionality for mobile
+    lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    lightbox.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50; // Minimum distance for a swipe
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                // Swipe right - previous image
+                prevImage();
+            } else {
+                // Swipe left - next image
+                nextImage();
+            }
+        }
+    }
+
+        // Portfolio View Shoot Functionality
+        const viewShootButtons = document.querySelectorAll('.view-shoot-btn');
+        const videoLightbox = document.getElementById('videoLightbox');
+        const videoLightboxIframe = document.getElementById('videoLightboxIframe');
+        const videoLightboxClose = document.getElementById('videoLightboxClose');
+        
+        // Portfolio image lightbox
+        viewShootButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the portfolio item click
+                const images = JSON.parse(button.getAttribute('data-images'));
+                openPortfolioLightbox(images);
+            });
+        });
+        
+        // Portfolio video lightbox
+        document.querySelectorAll('.portfolio-card iframe').forEach(iframe => {
+            iframe.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the portfolio item click
+                const videoSrc = iframe.src;
+                openVideoLightbox(videoSrc);
+            });
+        });
+        
+        function openPortfolioLightbox(images) {
+            // Create a new lightbox for portfolio images
+            const portfolioLightbox = document.createElement('div');
+            portfolioLightbox.className = 'lightbox active';
+            portfolioLightbox.innerHTML = `
+                <button class="lightbox-close">&times;</button>
+                <div class="lightbox-nav">
+                    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="lightbox-content">
+                    <img src="${images[0]}" alt="Portfolio Image">
+                    <div class="lightbox-caption">
+                        <h3>Portfolio Images</h3>
+                        <p>Image 1 of ${images.length}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(portfolioLightbox);
+            document.body.style.overflow = 'hidden';
+            
+            let currentImageIndex = 0;
+            const portfolioImage = portfolioLightbox.querySelector('img');
+            const portfolioCaption = portfolioLightbox.querySelector('.lightbox-caption p');
+            const portfolioClose = portfolioLightbox.querySelector('.lightbox-close');
+            const portfolioPrev = portfolioLightbox.querySelector('.lightbox-prev');
+            const portfolioNext = portfolioLightbox.querySelector('.lightbox-next');
+            
+            function updatePortfolioImage() {
+                portfolioImage.src = images[currentImageIndex];
+                portfolioCaption.textContent = `Image ${currentImageIndex + 1} of ${images.length}`;
+            }
+            
+            portfolioClose.addEventListener('click', () => {
+                document.body.removeChild(portfolioLightbox);
+                document.body.style.overflow = 'auto';
+            });
+            
+            portfolioPrev.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updatePortfolioImage();
+            });
+            
+            portfolioNext.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updatePortfolioImage();
+            });
+            
+            // Close when clicking outside the image
+            portfolioLightbox.addEventListener('click', (e) => {
+                if (e.target === portfolioLightbox) {
+                    document.body.removeChild(portfolioLightbox);
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function handleKeydown(e) {
+                if (portfolioLightbox.classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        document.body.removeChild(portfolioLightbox);
+                        document.body.style.overflow = 'auto';
+                        document.removeEventListener('keydown', handleKeydown);
+                    } else if (e.key === 'ArrowLeft') {
+                        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                        updatePortfolioImage();
+                    } else if (e.key === 'ArrowRight') {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        updatePortfolioImage();
+                    }
+                }
+            });
+        }
+        
+        function openVideoLightbox(videoSrc) {
+            videoLightboxIframe.src = videoSrc;
+            videoLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVideoLightbox() {
+            videoLightbox.classList.remove('active');
+            videoLightboxIframe.src = '';
+            document.body.style.overflow = 'auto';
+        }
+        
+        videoLightboxClose.addEventListener('click', closeVideoLightbox);
+        
+        videoLightbox.addEventListener('click', (e) => {
+            if (e.target === videoLightbox) {
+                closeVideoLightbox();
+            }
+        });
+        
+        // Close video lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (videoLightbox.classList.contains('active') && e.key === 'Escape') {
+                closeVideoLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
