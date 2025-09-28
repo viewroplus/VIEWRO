@@ -1348,6 +1348,53 @@
             .gallery-collage {
                 height: 400px;
             }
+
+            
+    /* Coll Image Section Common */
+#collimage-section {
+    position: relative;
+    padding: 0;
+}
+
+.collimage {
+    width: 100%;
+    text-align: center;
+}
+
+.collimage img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 0;
+    width: 100%;   /* always scale with width */
+    height: auto;  /* default desktop: keep full image */
+}
+
+/* ----- Desktop View (769px+) ----- */
+@media screen and (min-width: 769px) {
+    .collimage img {
+        width: auto;          /* keep original width */
+        max-width: 10%;      /* but not overflow */
+        height: auto;         /* keep proportions */
+        object-fit: contain;  /* full image visible */
+    }
+}
+
+/* ----- Mobile View (768px-) ----- */
+@media screen and (max-width: 768px) {
+    .collimage img {
+        width: 100%;
+        height: 150px;        /* limit height */
+        object-fit: cover;    /* fill + crop */
+    }
+}
+
+
+
+
+
+
+
+
             
             /* Mobile-specific lightbox styles */
             .lightbox-close {
@@ -1500,6 +1547,9 @@
             .testimonial-nav {
                 margin-top: 20px;
             }
+
+            
+
         }
     </style>
 </head>
@@ -1694,6 +1744,10 @@
         </div>
     </section>
 
+
+
+
+
        <!-- Lightbox Modal - IMPROVED FOR MOBILE -->
     <div class="lightbox" id="lightbox" style="display: none;">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
@@ -1786,6 +1840,15 @@
             </div>
         </div>
     </section>
+
+
+ <!-- Coll Image Section -->
+<section id="collimage-section">
+    <div class="collimage">
+        <img src="Team/coverCover.jpg" alt="Cover Image">
+    </div>
+</section>
+
 
     <!-- Portfolio Section - UPDATED -->
     <section id="portfolio">
