@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIWERO - Creative Photography & Videography</title>
+    <title>VIEWRO - Creative Photography & Videography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1551,14 +1551,386 @@
             
 
         }
+
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        #loading-screen::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(231, 76, 60, 0.03) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .loading-icons {
+            position: relative;
+            margin-bottom: 30px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .icon-container {
+            position: relative;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2) 0%, rgba(243, 156, 18, 0.2) 100%);
+            border: 3px solid rgba(231, 76, 60, 0.4);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .camera-icon {
+            animation: cameraFloat 2s ease-in-out infinite, iconReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+        }
+
+        .video-icon {
+            animation: videoFloat 2s ease-in-out infinite 1s, iconReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+        }
+
+        .music-icon {
+            animation: musicFloat 2s ease-in-out infinite 0.5s, iconReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+        }
+
+        .icon-container i {
+            font-size: 26px;
+            color: #e74c3c;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .camera-icon:hover,
+        .video-icon:hover,
+        .music-icon:hover {
+            transform: scale(1.15) translateY(-5px);
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.3) 0%, rgba(243, 156, 18, 0.3) 100%);
+            border-color: rgba(231, 76, 60, 0.6);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .camera-icon:hover i,
+        .video-icon:hover i,
+        .music-icon:hover i {
+            color: #f39c12;
+            transform: scale(1.2);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes iconReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-180deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes cameraFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes videoFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes musicFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .loading-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: titleReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+            background: linear-gradient(135deg, #e74c3c 0%, #f39c12 50%, #e74c3c 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both, gradientShift 3s ease-in-out infinite 1.8s;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .loading-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #2c3e50;
+            animation: subtitleReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .loading-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+            animation: underlineExpand 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.6s both;
+        }
+
+        .loading-tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #5a6c7d;
+            animation: taglineReveal 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s both;
+            letter-spacing: 0.1em;
+            font-style: italic;
+            margin-top: 25px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .loading-tagline::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12);
+            animation: leftLineExpand 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.8s both;
+        }
+
+        .loading-tagline::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, #f39c12, #e74c3c);
+            animation: rightLineExpand 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1.8s both;
+        }
+
+        @keyframes titleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes subtitleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes underlineExpand {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 120px;
+            }
+        }
+
+        @keyframes taglineReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes leftLineExpand {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            100% {
+                width: 20px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes rightLineExpand {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            100% {
+                width: 20px;
+                opacity: 1;
+            }
+        }
+
+        /* Hide loading screen */
+        #loading-screen.fade-out {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .loading-title {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .loading-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 0.2em;
+            }
+
+            .loading-tagline {
+                font-size: 0.8rem;
+                margin-top: 20px;
+                letter-spacing: 0.05em;
+            }
+
+            .loading-tagline::before,
+            .loading-tagline::after {
+                width: 15px;
+            }
+
+            .loading-icons {
+                margin-bottom: 20px;
+                height: 60px;
+                gap: 25px;
+            }
+
+            .icon-container {
+                width: 50px;
+                height: 50px;
+            }
+
+            .icon-container i {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loading-icons {
+                height: 50px;
+                gap: 20px;
+            }
+
+            .icon-container {
+                width: 40px;
+                height: 40px;
+            }
+
+            .icon-container i {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-icons">
+                <div class="icon-container camera-icon">
+                    <i class="fas fa-camera-retro"></i>
+                </div>
+                <div class="icon-container video-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="icon-container music-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+            </div>
+            <h1 class="loading-title">Welcome to VIEWRO</h1>
+            <p class="loading-subtitle">Professional Photography & Videography</p>
+            <p class="loading-tagline">Capturing Life's Most Precious Moments</p>
+        </div>
+    </div>
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#hero" class="logo">VI<span>WERO</span></a>
+                <a href="#hero" class="logo">VI<span>EWRO</span></a>
                 <ul class="nav-links">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -1568,7 +1940,7 @@
                     <li><a href="#team">Our Team</a></li>
                     <li><a href="#vlogs">Our Vlogs</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact">Book Date</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -1593,7 +1965,7 @@
                     <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
                     <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://wa.me/15551234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/94766096453" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -1610,7 +1982,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Creating Visual & Audio Stories Since 2023</h2>
-                    <p>At VIWERO, we believe that every moment tells a story. Our journey began with a simple camera and a big dream - to capture the beauty, emotion, and authenticity of life's most precious moments.</p>
+                    <p>At VIEWRO, we believe that every moment tells a story. Our journey began with a simple camera and a big dream - to capture the beauty, emotion, and authenticity of life's most precious moments.</p>
                     <p>Today, we're a team of dedicated professionals specializing in photography, videography, and music production services for weddings, corporate events, commercial projects, and personal milestones.</p>
                     
                     <div class="about-stats">
@@ -1633,7 +2005,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                   <img src="image/TEAMCOVER.jpg" alt="VIWERO Team">
+                   <img src="image/TEAMCOVER.jpg" alt="VIEWRO Team">
 
                     <div class="image-overlay"></div>
                 </div>
@@ -2005,7 +2377,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Team</h2>
-                <p>Meet the talented individuals behind VIWERO who bring creativity and expertise to every project.</p>
+                <p>Meet the talented individuals behind VIEWRO who bring creativity and expertise to every project.</p>
             </div>
             <div class="team-grid">
                 <div class="team-member">
@@ -2137,13 +2509,13 @@
         <div class="container">
             <div class="section-title">
                 <h2>Clients Say</h2>
-                <p>Hear what our clients have to say about their experience working with VIWERO.</p>
+                <p>Hear what our clients have to say about their experience working with VIEWRO.</p>
             </div>
             <div class="testimonials-container">
                 <div class="testimonial-slider">
                     <div class="testimonial">
                         <div class="testimonial-text">
-                            VIWERO captured our wedding day perfectly! The photos are stunning and truly reflect the emotions of the day. Their team was professional, creative, and made us feel so comfortable throughout the entire process.
+                            VIEWRO captured our wedding day perfectly! The photos are stunning and truly reflect the emotions of the day. Their team was professional, creative, and made us feel so comfortable throughout the entire process.
                         </div>
                         <div class="client-info">
                             <div class="client-avatar">
@@ -2158,7 +2530,7 @@
                     
                     <div class="testimonial">
                         <div class="testimonial-text">
-                            The commercial video VIWERO produced for our brand exceeded all expectations. Their attention to detail and creative approach helped us connect with our audience in a meaningful way. We've seen a significant increase in engagement since the campaign launched.
+                            The commercial video VIEWRO produced for our brand exceeded all expectations. Their attention to detail and creative approach helped us connect with our audience in a meaningful way. We've seen a significant increase in engagement since the campaign launched.
                         </div>
                         <div class="client-info">
                             <div class="client-avatar">
@@ -2173,7 +2545,7 @@
                     
                     <div class="testimonial">
                         <div class="testimonial-text">
-                            As a musician, finding the right team to produce my music video was crucial. VIWERO understood my vision completely and brought it to life in ways I couldn't have imagined. The final product was even better than I hoped for.
+                            As a musician, finding the right team to produce my music video was crucial. VIEWRO understood my vision completely and brought it to life in ways I couldn't have imagined. The final product was even better than I hoped for.
                         </div>
                         <div class="client-info">
                             <div class="client-avatar">
@@ -2188,7 +2560,7 @@
                     
                     <div class="testimonial">
                         <div class="testimonial-text">
-                            We've worked with VIWERO on multiple corporate events, and they consistently deliver exceptional results. Their team is professional, punctual, and the quality of their work is outstanding. They've become our go-to for all our visual content needs.
+                            We've worked with VIEWRO on multiple corporate events, and they consistently deliver exceptional results. Their team is professional, punctual, and the quality of their work is outstanding. They've become our go-to for all our visual content needs.
                         </div>
                         <div class="client-info">
                             <div class="client-avatar">
@@ -2203,7 +2575,7 @@
                     
                     <div class="testimonial">
                         <div class="testimonial-text">
-                            The product photography VIWERO created for our e-commerce store has significantly boosted our conversion rates. Their ability to showcase products in the best light while maintaining authenticity is remarkable. Highly recommended!
+                            The product photography VIEWRO created for our e-commerce store has significantly boosted our conversion rates. Their ability to showcase products in the best light while maintaining authenticity is remarkable. Highly recommended!
                         </div>
                         <div class="client-info">
                             <div class="client-avatar">
@@ -2237,8 +2609,8 @@
     <section id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Get In Touch</h2>
-                <p>Ready to bring your creative vision to life? Contact us today to discuss your photography, videography, or music production needs.</p>
+                <h2>Book Your Date</h2>
+                <p>Ready to bring your creative vision to life? Book your session today to discuss your photography, videography, or music production needs.</p>
             </div>
             <div class="contact-content">
                 <div class="contact-form">
@@ -2266,7 +2638,7 @@
                         <div class="form-group">
                             <textarea class="form-control" placeholder="Your Message" required></textarea>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="btn">Book Now</button>
                     </form>
                 </div>
                 
@@ -2287,7 +2659,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Phone Number</h3>
-                            <p>+1 (555) 123-4567</p>
+                            <p>+94 766 096 453</p>
                         </div>
                     </div>
                     
@@ -2297,7 +2669,7 @@
                         </div>
                         <div class="contact-details">
                             <h3>Email Address</h3>
-                            <p>hello@viwero.com</p>
+                            <p>hello@viewro.com</p>
                         </div>
                     </div>
                     
@@ -2320,7 +2692,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <a href="#hero" class="logo">VI<span>WERO</span></a>
+                    <a href="#hero" class="logo">VI<span>EWRO</span></a>
                     <p>Capturing moments with creativity and precision. Professional photography, videography, and music production services for all occasions.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -2341,7 +2713,7 @@
                         <li><a href="#team">Our Team</a></li>
                         <li><a href="#vlogs">Our Vlogs</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">Book Date</a></li>
                     </ul>
                 </div>
                 
@@ -2362,19 +2734,31 @@
                     <h3>Contact Info</h3>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> 123 Creative Lane, Cityville</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> hello@viwero.com</li>
+                        <li><i class="fas fa-phone"></i> +94 766 096 453</li>
+                        <li><i class="fas fa-envelope"></i> hello@viewro.com</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 VIWERO. All Rights Reserved.</p>
+                <p>&copy; 2023 VIEWRO. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.classList.add('fade-out');
+                
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500); // Wait for fade-out animation to complete
+            }, 2000); // Show loading screen for 2 seconds
+        });
+
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -2464,10 +2848,78 @@
             }
         });
         
-        // Simple form submission
+        // WhatsApp form submission with validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value.trim();
+            const email = this.querySelector('input[type="email"]').value.trim();
+            const phone = this.querySelector('input[type="tel"]').value.trim();
+            const service = this.querySelector('select').value;
+            const message = this.querySelector('textarea').value.trim();
+            
+            // Validation
+            if (!name) {
+                alert('Please enter your name.');
+                return;
+            }
+            
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+            
+            if (!phone) {
+                alert('Please enter your phone number.');
+                return;
+            }
+            
+            // Phone number validation - should be 10 digits
+            const phoneDigits = phone.replace(/\D/g, ''); // Remove non-digits
+            if (phoneDigits.length !== 10) {
+                alert('Please enter a valid 10-digit phone number.');
+                return;
+            }
+            
+            if (!service) {
+                alert('Please select a service you are interested in.');
+                return;
+            }
+            
+            if (!message) {
+                alert('Please enter your message.');
+                return;
+            }
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hello! I would like to book a session with VIEWRO.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service: ${service}
+Message: ${message}
+
+Thank you!`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // WhatsApp number (Sri Lankan format)
+            const whatsappNumber = '94766096453'; // 0766096453 in international format
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('Thank you! WhatsApp will open with your message. Please send it to complete your booking request.');
+            
+            // Reset form
             this.reset();
         });
 
