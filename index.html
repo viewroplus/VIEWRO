@@ -946,17 +946,20 @@
         .testimonial-slider {
             display: flex;
             transition: transform 0.5s ease;
+            justify-content: center; /* center slides when fewer visible */
         }
 
            .testimonial {
-    background: rgb(255, 255, 255);
+    background: #ffffff;
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
     margin: 0 15px;
-    width: 60%;   /* min-width epa, meka ganna */
+    width: 80%;
     text-align: center;
     flex-shrink: 0;
+    line-height: 1.6;
 }
 
         .testimonial-text {
@@ -987,18 +990,13 @@
 
         .client-info {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 6px;
         }
 
-        .client-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            border: 3px solid var(--primary);
-        }
+        .client-avatar { display: none; }
 
         .client-avatar img {
             width: 100%;
@@ -2195,9 +2193,6 @@
                             VIEWRO captured our wedding day perfectly! The photos are stunning and truly reflect the emotions of the day. Their team was professional, creative, and made us feel so comfortable throughout the entire process.
                         </div>
                         <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
-                            </div>
                             <div class="client-details">
                                 <h4>Sarah Johnson</h4>
                                 <p>Wedding Client</p>
@@ -2210,9 +2205,6 @@
                             The commercial video VIEWRO produced for our brand exceeded all expectations. Their attention to detail and creative approach helped us connect with our audience in a meaningful way. We've seen a significant increase in engagement since the campaign launched.
                         </div>
                         <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
-                            </div>
                             <div class="client-details">
                                 <h4>Michael Chen</h4>
                                 <p>Marketing Director, TechCorp</p>
@@ -2225,9 +2217,6 @@
                             As a musician, finding the right team to produce my music video was crucial. VIEWRO understood my vision completely and brought it to life in ways I couldn't have imagined. The final product was even better than I hoped for.
                         </div>
                         <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Rodriguez">
-                            </div>
                             <div class="client-details">
                                 <h4>Elena Rodriguez</h4>
                                 <p>Musician & Artist</p>
@@ -2240,9 +2229,6 @@
                             We've worked with VIEWRO on multiple corporate events, and they consistently deliver exceptional results. Their team is professional, punctual, and the quality of their work is outstanding. They've become our go-to for all our visual content needs.
                         </div>
                         <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="David Thompson">
-                            </div>
                             <div class="client-details">
                                 <h4>David Thompson</h4>
                                 <p>Event Manager, Global Events Inc.</p>
@@ -2255,9 +2241,6 @@
                             The product photography VIEWRO created for our e-commerce store has significantly boosted our conversion rates. Their ability to showcase products in the best light while maintaining authenticity is remarkable. Highly recommended!
                         </div>
                         <div class="client-info">
-                            <div class="client-avatar">
-                                <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Priya Sharma">
-                            </div>
                             <div class="client-details">
                                 <h4>Priya Sharma</h4>
                                 <p>Founder, Artisan Crafts</p>
