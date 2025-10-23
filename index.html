@@ -406,6 +406,274 @@
             opacity: 0.2;
         }
 
+        /* Special Offers Section */
+        #offers {
+            background: var(--light);
+            position: relative;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .offer-card {
+            background: white;
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #f0f0f0;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: var(--primary);
+        }
+
+        .offer-card.featured {
+            border: 2px solid var(--primary);
+            background: white;
+        }
+
+        .offer-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .offer-card.featured .offer-badge {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .offer-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .offer-header::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 8px solid var(--primary);
+        }
+
+        .offer-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .offer-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .old-price {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: line-through;
+        }
+
+        .new-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .offer-content {
+            padding: 30px 25px;
+            background: white;
+        }
+
+        .offer-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .offer-features li {
+            padding: 10px 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .offer-features li:last-child {
+            border-bottom: none;
+        }
+
+        .offer-features li:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .offer-features li i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .offer-savings {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 20px 0;
+        }
+
+        .offer-btn {
+            width: calc(100% - 50px);
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 25px 25px;
+        }
+
+        .offer-btn:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .offer-card.featured .offer-btn {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .offer-card.featured .offer-btn:hover {
+            background: #ffed4e;
+        }
+
+        /* Call to Action */
+        .offers-cta {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .cta-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .cta-content p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: none;
+        }
+
+        .cta-buttons .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cta-buttons .btn-primary:hover {
+            background: var(--primary);
+        }
+
+        .cta-buttons .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .offer-card {
+                padding: 25px;
+            }
+
+            .cta-content h3 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
         /* Gallery Section - NEW DESIGN */
         #gallery {
             padding: 100px 0;
@@ -1644,6 +1912,122 @@
         </div>
     </section>
 
+    <!-- Special Offers Section -->
+    <section id="offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Special Offers & Deals</h2>
+                <p>Don't miss out on our exclusive packages and limited-time offers designed just for you!</p>
+            </div>
+            <div class="offers-grid">
+                <!-- Offer 1 -->
+                <div class="offer-card featured">
+                    <div class="offer-badge">Most Popular</div>
+                    <div class="offer-header">
+                        <h3>Wedding Package Deal</h3>
+                        <div class="offer-price">
+                            <span class="old-price">Rs. 150,000</span>
+                            <span class="new-price">Rs. 120,000</span>
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <ul class="offer-features">
+                            <li><i class="fas fa-check"></i> Full Day Photography</li>
+                            <li><i class="fas fa-check"></i> 2 Videographers</li>
+                            <li><i class="fas fa-check"></i> Drone Coverage</li>
+                            <li><i class="fas fa-check"></i> 500+ Edited Photos</li>
+                            <li><i class="fas fa-check"></i> 5-10 Minute Highlight Video</li>
+                            <li><i class="fas fa-check"></i> Online Gallery</li>
+                        </ul>
+                        <div class="offer-savings">Save Rs. 30,000</div>
+                    </div>
+                    <button class="offer-btn" onclick="openWhatsApp('Wedding Package Deal - Rs. 120,000')">Book Now</button>
+                </div>
+
+                <!-- Offer 2 -->
+                <div class="offer-card">
+                    <div class="offer-badge">Limited Time</div>
+                    <div class="offer-header">
+                        <h3>Corporate Event Package</h3>
+                        <div class="offer-price">
+                            <span class="old-price">Rs. 80,000</span>
+                            <span class="new-price">Rs. 65,000</span>
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <ul class="offer-features">
+                            <li><i class="fas fa-check"></i> Professional Photography</li>
+                            <li><i class="fas fa-check"></i> Event Videography</li>
+                            <li><i class="fas fa-check"></i> Live Streaming Setup</li>
+                            <li><i class="fas fa-check"></i> 200+ Edited Photos</li>
+                            <li><i class="fas fa-check"></i> 3-5 Minute Event Video</li>
+                        </ul>
+                        <div class="offer-savings">Save Rs. 15,000</div>
+                    </div>
+                    <button class="offer-btn" onclick="openWhatsApp('Corporate Event Package - Rs. 65,000')">Book Now</button>
+                </div>
+
+                <!-- Offer 3 -->
+                <div class="offer-card">
+                    <div class="offer-badge">New Service</div>
+                    <div class="offer-header">
+                        <h3>Music Production Deal</h3>
+                        <div class="offer-price">
+                            <span class="old-price">Rs. 50,000</span>
+                            <span class="new-price">Rs. 35,000</span>
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <ul class="offer-features">
+                            <li><i class="fas fa-check"></i> Original Soundtrack</li>
+                            <li><i class="fas fa-check"></i> Audio Mixing & Mastering</li>
+                            <li><i class="fas fa-check"></i> Sound Design</li>
+                            <li><i class="fas fa-check"></i> 3 Revisions Included</li>
+                            <li><i class="fas fa-check"></i> High Quality Audio Files</li>
+                        </ul>
+                        <div class="offer-savings">Save Rs. 15,000</div>
+                    </div>
+                    <button class="offer-btn" onclick="openWhatsApp('Music Production Deal - Rs. 35,000')">Book Now</button>
+                </div>
+
+                <!-- Offer 4 -->
+                <div class="offer-card">
+                    <div class="offer-badge">Student Discount</div>
+                    <div class="offer-header">
+                        <h3>Portrait Session</h3>
+                        <div class="offer-price">
+                            <span class="old-price">Rs. 25,000</span>
+                            <span class="new-price">Rs. 15,000</span>
+                        </div>
+                    </div>
+                    <div class="offer-content">
+                        <ul class="offer-features">
+                            <li><i class="fas fa-check"></i> 2 Hour Photo Session</li>
+                            <li><i class="fas fa-check"></i> Professional Makeup</li>
+                            <li><i class="fas fa-check"></i> 50+ Edited Photos</li>
+                            <li><i class="fas fa-check"></i> Online Gallery</li>
+                            <li><i class="fas fa-check"></i> 5 High-Res Prints</li>
+                        </ul>
+                        <div class="offer-savings">Save Rs. 10,000</div>
+                    </div>
+                    <button class="offer-btn" onclick="openWhatsApp('Portrait Session - Rs. 15,000')">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="offers-cta">
+                <div class="cta-content">
+                    <h3>Ready to Capture Your Special Moments?</h3>
+                    <p>Contact us now to book your session and take advantage of these amazing offers!</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Quote</a>
+                        <a href="tel:0766096453" class="btn btn-secondary">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Section - NEW DESIGN -->
     <section id="gallery">
         <div class="container">
@@ -2409,6 +2793,14 @@
     </footer>
 
     <script>
+        // WhatsApp function for offer bookings
+        function openWhatsApp(serviceName) {
+            const phoneNumber = '94766096453'; // Sri Lanka format
+            const message = `Hi! I'm interested in booking the ${serviceName}. Could you please provide more details about this package?`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
