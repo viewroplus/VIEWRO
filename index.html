@@ -406,12 +406,13 @@
             opacity: 0.2;
         }
 
-        /* Special Offers Section */
+        /* Special Offers Section - ENHANCED */
         #offers {
             background: var(--light);
             position: relative;
         }
 
+        /* Enhanced offer card visuals for Graduation packages */
         .offers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -420,20 +421,19 @@
         }
 
         .offer-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+            border-radius: 18px;
             padding: 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(12, 20, 30, 0.08);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
             position: relative;
             overflow: hidden;
-            border: 2px solid #f0f0f0;
+            border: 1px solid rgba(0,0,0,0.04);
         }
 
         .offer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(12,20,30,0.12);
         }
 
         .offer-card.featured {
@@ -453,24 +453,25 @@
 
         .offer-badge {
             position: absolute;
-            top: -10px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            top: 14px;
+            right: 14px;
+            background: rgba(255,255,255,0.95);
+            color: var(--primary-dark);
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            font-size: 0.85rem;
             z-index: 2;
         }
 
         .offer-card.featured .offer-badge {
-            background: #ffd700;
+            background: rgba(255,255,255,0.95);
             color: #333;
         }
 
         .offer-header {
-            background: var(--primary);
+            background: linear-gradient(90deg, rgba(231,76,60,1) 0%, rgba(243,156,18,1) 100%);
             color: white;
             padding: 30px 25px;
             text-align: center;
@@ -527,12 +528,12 @@
         }
 
         .offer-features li {
-            padding: 10px 0;
+            padding: 12px 0;
             color: var(--text-light);
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid #f0f0f0;
+            gap: 14px;
+            border-bottom: 1px dashed #f1f1f1;
             transition: all 0.3s ease;
         }
 
@@ -553,33 +554,33 @@
         }
 
         .offer-savings {
-            background: #ff6b6b;
+            display: inline-block;
+            background: linear-gradient(90deg,#ff6b6b,#ff9a6b);
             color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin: 20px 0;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            margin-top: 18px;
         }
 
         .offer-btn {
+            display: block;
             width: calc(100% - 50px);
-            background: var(--primary);
+            background: var(--gradient);
             color: white;
             border: none;
-            padding: 15px 25px;
-            border-radius: 8px;
+            padding: 14px 25px;
+            border-radius: 10px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0 25px 25px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 20px 25px 30px;
         }
 
         .offer-btn:hover {
-            background: #667eea;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(231,76,60,0.18);
         }
 
         .offer-card.featured .offer-btn {
@@ -1912,113 +1913,92 @@
         </div>
     </section>
 
-    <!-- Special Offers Section -->
+    <!-- Special Offers Section - ENHANCED -->
     <section id="offers">
         <div class="container">
             <div class="section-title">
                 <h2>Special Offers & Deals</h2>
-                <p>Don't miss out on our exclusive packages and limited-time offers designed just for you!</p>
+                <p>🎓 Graduation Photography Packages — choose your package and book today!</p>
             </div>
             <div class="offers-grid">
-                <!-- Offer 1 -->
+                <!-- Package 1: Single Shoot -->
                 <div class="offer-card featured">
-                    <div class="offer-badge">Most Popular</div>
+                    <div class="offer-badge">Hot Deal</div>
                     <div class="offer-header">
-                        <h3>Wedding Package Deal</h3>
+                        <h3>Single Shoot Package</h3>
                         <div class="offer-price">
-                            <span class="old-price">Rs. 150,000</span>
-                            <span class="new-price">Rs. 120,000</span>
+                            <span class="old-price">Rs. 7,000/=</span>
+                            <span class="new-price">Rs. 3,000/=</span>
                         </div>
                     </div>
                     <div class="offer-content">
                         <ul class="offer-features">
-                            <li><i class="fas fa-check"></i> Full Day Photography</li>
-                            <li><i class="fas fa-check"></i> 2 Videographers</li>
-                            <li><i class="fas fa-check"></i> Drone Coverage</li>
-                            <li><i class="fas fa-check"></i> 500+ Edited Photos</li>
-                            <li><i class="fas fa-check"></i> 5-10 Minute Highlight Video</li>
-                            <li><i class="fas fa-check"></i> Online Gallery</li>
+                            <li><i class="fas fa-check"></i> 1 Hour Photo Session (Outdoor or Campus Location)</li>
+                            <li><i class="fas fa-check"></i> 20–30 Edited Photos</li>
+                            <li><i class="fas fa-check"></i> All RAW Photos</li>
+                            <li><i class="fas fa-check"></i> 🎬 Special Short Video (1–2 min) — cinematic highlight</li>
+                            <li><i class="fas fa-truck"></i> Delivery: 10 Edited Photos within 24 Hours</li>
+                            <li><i class="fas fa-clock"></i> Remaining Photos & Video within 3–5 Days</li>
                         </ul>
-                        <div class="offer-savings">Save Rs. 30,000</div>
+                        <div class="offer-savings">You Save Rs. 4,000/=</div>
                     </div>
-                    <button class="offer-btn" onclick="openWhatsApp('Wedding Package Deal - Rs. 120,000')">Book Now</button>
+                    <button class="offer-btn" onclick="openBookingModal('Single Shoot Package', 'Rs. 3,000/=')">Book Now</button>
                 </div>
 
-                <!-- Offer 2 -->
+                <!-- Package 2: Couple Shoot -->
                 <div class="offer-card">
-                    <div class="offer-badge">Limited Time</div>
+                    <div class="offer-badge">Best Value</div>
                     <div class="offer-header">
-                        <h3>Corporate Event Package</h3>
+                        <h3>Couple Shoot Package</h3>
                         <div class="offer-price">
-                            <span class="old-price">Rs. 80,000</span>
-                            <span class="new-price">Rs. 65,000</span>
+                            <span class="old-price">Rs. 10,000/=</span>
+                            <span class="new-price">Rs. 5,000/=</span>
                         </div>
                     </div>
                     <div class="offer-content">
                         <ul class="offer-features">
-                            <li><i class="fas fa-check"></i> Professional Photography</li>
-                            <li><i class="fas fa-check"></i> Event Videography</li>
-                            <li><i class="fas fa-check"></i> Live Streaming Setup</li>
-                            <li><i class="fas fa-check"></i> 200+ Edited Photos</li>
-                            <li><i class="fas fa-check"></i> 3-5 Minute Event Video</li>
+                            <li><i class="fas fa-check"></i> 1 Hour Photo Session (Outdoor or Campus Location)</li>
+                            <li><i class="fas fa-check"></i> 20–30 Edited Photos</li>
+                            <li><i class="fas fa-check"></i> All RAW Photos</li>
+                            <li><i class="fas fa-check"></i> 🎬 Special Short Video (1–2 min) — capture your love</li>
+                            <li><i class="fas fa-truck"></i> Delivery: 10 Edited Photos within 24 Hours</li>
+                            <li><i class="fas fa-clock"></i> Remaining Photos & Video within 3–5 Days</li>
                         </ul>
-                        <div class="offer-savings">Save Rs. 15,000</div>
+                        <div class="offer-savings">You Save Rs. 5,000/=</div>
                     </div>
-                    <button class="offer-btn" onclick="openWhatsApp('Corporate Event Package - Rs. 65,000')">Book Now</button>
+                    <button class="offer-btn" onclick="openBookingModal('Couple Shoot Package', 'Rs. 5,000/=')">Book Now</button>
                 </div>
 
-                <!-- Offer 3 -->
+                <!-- Package 3: Group Shoot -->
                 <div class="offer-card">
-                    <div class="offer-badge">New Service</div>
+                    <div class="offer-badge">Group Deal</div>
                     <div class="offer-header">
-                        <h3>Music Production Deal</h3>
+                        <h3>Group Shoot Package (Up to 5 People)</h3>
                         <div class="offer-price">
-                            <span class="old-price">Rs. 50,000</span>
-                            <span class="new-price">Rs. 35,000</span>
+                            <span class="old-price">Rs. 30,000/=</span>
+                            <span class="new-price">Rs. 10,000/=</span>
                         </div>
                     </div>
                     <div class="offer-content">
                         <ul class="offer-features">
-                            <li><i class="fas fa-check"></i> Original Soundtrack</li>
-                            <li><i class="fas fa-check"></i> Audio Mixing & Mastering</li>
-                            <li><i class="fas fa-check"></i> Sound Design</li>
-                            <li><i class="fas fa-check"></i> 3 Revisions Included</li>
-                            <li><i class="fas fa-check"></i> High Quality Audio Files</li>
+                            <li><i class="fas fa-check"></i> 1 Hour Photo Session (Outdoor or Campus Location)</li>
+                            <li><i class="fas fa-check"></i> 20–30 Edited Photos</li>
+                            <li><i class="fas fa-check"></i> All RAW Photos</li>
+                            <li><i class="fas fa-check"></i> 🎬 Special Short Video (1–2 min) — cinematic group highlight</li>
+                            <li><i class="fas fa-truck"></i> Delivery: 10 Edited Photos within 24 Hours</li>
+                            <li><i class="fas fa-clock"></i> Remaining Photos & Video within 3–5 Days</li>
                         </ul>
-                        <div class="offer-savings">Save Rs. 15,000</div>
+                        <div class="offer-savings">You Save Rs. 20,000/=</div>
                     </div>
-                    <button class="offer-btn" onclick="openWhatsApp('Music Production Deal - Rs. 35,000')">Book Now</button>
-                </div>
-
-                <!-- Offer 4 -->
-                <div class="offer-card">
-                    <div class="offer-badge">Student Discount</div>
-                    <div class="offer-header">
-                        <h3>Portrait Session</h3>
-                        <div class="offer-price">
-                            <span class="old-price">Rs. 25,000</span>
-                            <span class="new-price">Rs. 15,000</span>
-                        </div>
-                    </div>
-                    <div class="offer-content">
-                        <ul class="offer-features">
-                            <li><i class="fas fa-check"></i> 2 Hour Photo Session</li>
-                            <li><i class="fas fa-check"></i> Professional Makeup</li>
-                            <li><i class="fas fa-check"></i> 50+ Edited Photos</li>
-                            <li><i class="fas fa-check"></i> Online Gallery</li>
-                            <li><i class="fas fa-check"></i> 5 High-Res Prints</li>
-                        </ul>
-                        <div class="offer-savings">Save Rs. 10,000</div>
-                    </div>
-                    <button class="offer-btn" onclick="openWhatsApp('Portrait Session - Rs. 15,000')">Book Now</button>
+                    <button class="offer-btn" onclick="openBookingModal('Group Shoot Package', 'Rs. 10,000/=')">Book Now</button>
                 </div>
             </div>
 
-            <!-- Call to Action -->
+            <!-- Call to Action / Note -->
             <div class="offers-cta">
                 <div class="cta-content">
-                    <h3>Ready to Capture Your Special Moments?</h3>
-                    <p>Contact us now to book your session and take advantage of these amazing offers!</p>
+                    <h3>Note</h3>
+                    <p>All packages include professional color grading, lighting adjustments & delivery via Google Drive or Pen Drive.</p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn btn-primary">Get Quote</a>
                         <a href="tel:0766096453" class="btn btn-secondary">Call Now</a>
@@ -2156,6 +2136,28 @@
         <button class="video-lightbox-close" id="videoLightboxClose">&times;</button>
         <div class="video-lightbox-content">
             <iframe id="videoLightboxIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="lightbox" style="display:none; align-items:center; justify-content:center;">
+        <div class="lightbox-content" style="max-width:520px; width:95%; background:#fff; padding:20px; border-radius:12px; position:relative;">
+            <button class="lightbox-close" id="bookingClose" style="position:absolute; right:14px; top:14px; width:40px; height:40px; font-size:1.4rem;">&times;</button>
+            <h3 id="bookingServiceTitle" style="margin-top:6px; color:var(--dark); font-family:'Playfair Display', serif;">Book Package</h3>
+            <p id="bookingServicePrice" style="color:var(--text-light); margin-bottom:12px;"></p>
+
+            <form id="bookingForm" style="display:flex; flex-direction:column; gap:12px;">
+                <input type="text" id="bookingName" class="form-control" placeholder="Your Name" required>
+                <input type="tel" id="bookingPhone" class="form-control" placeholder="Contact Number (10 digits)" required>
+                <input type="date" id="bookingDate" class="form-control" required>
+                <textarea id="bookingNote" class="form-control" placeholder="Optional note (e.g. preferred time, location)"></textarea>
+                <input type="hidden" id="bookingService" value="">
+                <input type="hidden" id="bookingPrice" value="">
+                <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:8px;">
+                    <button type="button" class="btn btn-outline" id="bookingCancel" style="padding:10px 18px; border-radius:8px;">Cancel</button>
+                    <button type="submit" class="btn" style="padding:10px 18px; border-radius:8px;">Book Now</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -3366,6 +3368,60 @@ Thank you!`;
                 updateTestimonialSlider();
             }
         }
+
+        /* Booking modal logic */
+        const bookingModal = document.getElementById('bookingModal');
+        const bookingClose = document.getElementById('bookingClose');
+        const bookingCancel = document.getElementById('bookingCancel');
+        const bookingServiceTitle = document.getElementById('bookingServiceTitle');
+        const bookingServicePrice = document.getElementById('bookingServicePrice');
+        const bookingServiceField = document.getElementById('bookingService');
+        const bookingPriceField = document.getElementById('bookingPrice');
+        const bookingFormEl = document.getElementById('bookingForm');
+
+        function openBookingModal(service, price) {
+            bookingServiceTitle.textContent = service;
+            bookingServicePrice.textContent = price;
+            bookingServiceField.value = service;
+            bookingPriceField.value = price;
+            bookingModal.style.display = 'flex';
+            setTimeout(()=> bookingModal.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            bookingModal.classList.remove('active');
+            setTimeout(()=> bookingModal.style.display = 'none', 240);
+            document.body.style.overflow = 'auto';
+            bookingFormEl.reset();
+        }
+
+        bookingClose.addEventListener('click', closeBookingModal);
+        bookingCancel.addEventListener('click', closeBookingModal);
+        bookingModal.addEventListener('click', (e) => { if (e.target === bookingModal) closeBookingModal(); });
+
+        bookingFormEl.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('bookingName').value.trim();
+            const phone = document.getElementById('bookingPhone').value.trim();
+            const date = document.getElementById('bookingDate').value;
+            const note = document.getElementById('bookingNote').value.trim();
+            const service = bookingServiceField.value;
+            const price = bookingPriceField.value;
+
+            if (!name) { alert('Please enter your name.'); return; }
+            if (!phone) { alert('Please enter your contact number.'); return; }
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length !== 10) { alert('Please enter a valid 10-digit phone number.'); return; }
+            if (!date) { alert('Please choose a booking date.'); return; }
+
+            const whatsappNumber = '94766096453';
+            const msg = `Hello VIEWRO,\n\nI want to book:\nPackage: ${service}\nPrice: ${price}\nName: ${name}\nContact: ${phone}\nDate: ${date}\nNote: ${note || '-'}\n\nPlease confirm availability. Thank you!`;
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+            // close modal after opening WA
+            closeBookingModal();
+        });
     </script>
 </body>
 </html>
