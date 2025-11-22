@@ -553,6 +553,66 @@
             text-align: center;
         }
 
+        /* Special Video Feature Highlight */
+        .offer-features li[data-feature="video"] {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.12) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.4);
+            border-radius: 12px;
+            padding: 15px 18px;
+            margin: 12px 0;
+            position: relative;
+            font-weight: 600;
+            color: #764ba2;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+            animation: videoFeaturePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes videoFeaturePulse {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+                border-color: rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 30px rgba(102, 126, 234, 0.35);
+                border-color: rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .offer-features li[data-feature="video"]::before {
+            content: '🎁';
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+            animation: giftBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes giftBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.1); }
+        }
+
+        .offer-features li[data-feature="video"] i {
+            color: #764ba2;
+            font-size: 1.2rem;
+        }
+
+        .offer-features li[data-feature="video"]:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.18) 0%, rgba(118, 75, 162, 0.18) 100%);
+            border-color: rgba(102, 126, 234, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 35px rgba(102, 126, 234, 0.3);
+        }
+
         .offer-savings {
             display: inline-block;
             background: linear-gradient(90deg,#ff6b6b,#ff9a6b);
@@ -1936,7 +1996,7 @@
                             <li><i class="fas fa-check"></i> 1 Hour Photo Session (Outdoor or Campus Location)</li>
                             <li><i class="fas fa-check"></i> 15–20 Edited Photos</li>
                             <li><i class="fas fa-check"></i> All RAW Photos</li>
-                            <li><i class="fas fa-check"></i> 🎬 Special Short Video (1–2 min) — cinematic highlight</li>
+                            <li data-feature="video"><i class="fas fa-video"></i> 🎬 Special Short Video (1–2 min) — cinematic highlight</li>
                             <li><i class="fas fa-truck"></i> Delivery: 10 Edited Photos within 24 Hours</li>
                             <li><i class="fas fa-clock"></i> Remaining Photos & Video within 3–5 Days</li>
                         </ul>
@@ -1960,7 +2020,7 @@
                             <li><i class="fas fa-check"></i> 1 Hour Photo Session (Outdoor or Campus Location)</li>
                             <li><i class="fas fa-check"></i> 20–30 Edited Photos</li>
                             <li><i class="fas fa-check"></i> All RAW Photos</li>
-                            <li><i class="fas fa-check"></i> 🎬 Special Short Video (1–2 min) — capture your love</li>
+                            <li data-feature="video"><i class="fas fa-video"></i> 🎬 Special Short Video (1–2 min) — capture your love</li>
                             <li><i class="fas fa-truck"></i> Delivery: 10 Edited Photos within 24 Hours</li>
                             <li><i class="fas fa-clock"></i> Remaining Photos & Video within 3–5 Days</li>
                         </ul>
@@ -1984,7 +2044,7 @@
                             <li><i class="fas fa-check"></i> 1 Hour Photo Session (Outdoor or Campus Location)</li>
                             <li><i class="fas fa-check"></i> 1 Member 15 Edited Photos</li>
                             <li><i class="fas fa-check"></i> All RAW Photos</li>
-                            <li><i class="fas fa-check"></i> 🎬 Special Short Video (1–2 min) — cinematic group highlight</li>
+                            <li data-feature="video"><i class="fas fa-video"></i> 🎬 Special Short Video (1–2 min) — cinematic group highlight</li>
                             <li><i class="fas fa-truck"></i> Delivery: 10 Edited Photos within 24 Hours</li>
                             <li><i class="fas fa-clock"></i> Remaining Photos & Video within 3–5 Days</li>
                         </ul>
@@ -2150,7 +2210,8 @@
                 <input type="text" id="bookingName" class="form-control" placeholder="Your Name" required>
                 <input type="tel" id="bookingPhone" class="form-control" placeholder="Contact Number (10 digits)" required>
                 <input type="date" id="bookingDate" class="form-control" required>
-                <textarea id="bookingNote" class="form-control" placeholder="Optional note (e.g. preferred time, location)"></textarea>
+                <input type="time" id="bookingTime" class="form-control" required>
+                <textarea id="bookingNote" class="form-control" placeholder="Optional note (e.g. location, special requests)"></textarea>
                 <input type="hidden" id="bookingService" value="">
                 <input type="hidden" id="bookingPrice" value="">
                 <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:8px;">
@@ -3009,18 +3070,18 @@ Thank you!`;
 
         // Gallery Lightbox Functionality - IMPROVED FOR MOBILE
         const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxDescription = document.getElementById('lightboxDescription');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const lightboxPrev = document.getElementById('lightboxPrev');
-        const lightboxNext = document.getElementById('lightboxNext');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        let currentIndex = 0;
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDescription = document.getElementById('lightboxDescription');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
         // Build gallery data from actual gallery items
         const galleryData = Array.from(galleryItems).map(item => {
             const img = item.querySelector('img');
@@ -3031,20 +3092,20 @@ Thank you!`;
                 description: '© 2025 All Rights Reserved'
             };
         });
-        
-        // Open lightbox with specific image
-        function openLightbox(index) {
+    
+    // Open lightbox with specific image
+    function openLightbox(index) {
             if (index < 0 || index >= galleryData.length) return;
-            currentIndex = index;
-            lightboxImage.src = galleryData[index].src;
-            lightboxTitle.textContent = galleryData[index].title;
-            lightboxDescription.textContent = galleryData[index].description;
-            lightbox.style.display = 'flex';
-            setTimeout(() => {
-                lightbox.classList.add('active');
-            }, 10);
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
+        currentIndex = index;
+        lightboxImage.src = galleryData[index].src;
+        lightboxTitle.textContent = galleryData[index].title;
+        lightboxDescription.textContent = galleryData[index].description;
+        lightbox.style.display = 'flex';
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
     
     // Close lightbox
     function closeLightbox() {
@@ -3067,14 +3128,14 @@ Thank you!`;
         openLightbox(currentIndex);
     }
     
-        // Add event listeners to gallery items
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
+    // Add event listeners to gallery items
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
                 // Use the actual index from data-index attribute if available, otherwise use array index
                 const itemIndex = item.getAttribute('data-index') ? parseInt(item.getAttribute('data-index')) : index;
                 openLightbox(itemIndex);
-            });
         });
+    });
     
     // Add event listeners to lightbox controls
     lightboxClose.addEventListener('click', closeLightbox);
@@ -3373,6 +3434,7 @@ Thank you!`;
             const name = document.getElementById('bookingName').value.trim();
             const phone = document.getElementById('bookingPhone').value.trim();
             const date = document.getElementById('bookingDate').value;
+            const time = document.getElementById('bookingTime').value;
             const note = document.getElementById('bookingNote').value.trim();
             const service = bookingServiceField.value;
             const price = bookingPriceField.value;
@@ -3382,9 +3444,18 @@ Thank you!`;
             const phoneDigits = phone.replace(/\D/g, '');
             if (phoneDigits.length !== 10) { alert('Please enter a valid 10-digit phone number.'); return; }
             if (!date) { alert('Please choose a booking date.'); return; }
+            if (!time) { alert('Please select a booking time.'); return; }
+
+            // Format time for display (convert 24h to 12h format)
+            const timeParts = time.split(':');
+            const hours = parseInt(timeParts[0]);
+            const minutes = timeParts[1];
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            const formattedTime = `${displayHours}:${minutes} ${ampm}`;
 
             const whatsappNumber = '94766096453';
-            const msg = `Hello VIEWRO,\n\nI want to book:\nPackage: ${service}\nPrice: ${price}\nName: ${name}\nContact: ${phone}\nDate: ${date}\nNote: ${note || '-'}\n\nPlease confirm availability. Thank you!`;
+            const msg = `Hello VIEWRO,\n\nI want to book:\nPackage: ${service}\nPrice: ${price}\nName: ${name}\nContact: ${phone}\nDate: ${date}\nTime: ${formattedTime}\nNote: ${note || '-'}\n\nPlease confirm availability. Thank you!`;
             const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
             // close modal after opening WA
