@@ -1838,7 +1838,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#team">Our Team</a></li>
-                    <li><a href="#vlogs">Our Vlogs</a></li>
+                    <!-- <li><a href="#vlogs">Our Vlogs</a></li> -->
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Book Date</a></li>
                 </ul>
@@ -2490,6 +2490,7 @@
     </section>
 
     <!-- Vlogs Section -->
+    <!--
     <section id="vlogs">
         <div class="container">
             <div class="section-title">
@@ -2527,7 +2528,6 @@
                     </div>
                 </div>
                 
-                <!-- Hidden vlog cards -->
                 <div class="vlog-card hidden" data-video="qsRqY1uOD3o">
                     <div class="vlog-video">
                         <iframe src="https://www.youtube.com/embed/qsRqY1uOD3o?rel=0&modestbranding=1" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -2564,6 +2564,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- Testimonials Section - UPDATED -->
     <section id="testimonials">
@@ -2759,7 +2760,7 @@
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#team">Our Team</a></li>
-                        <li><a href="#vlogs">Our Vlogs</a></li>
+                        <!-- <li><a href="#vlogs">Our Vlogs</a></li> -->
                         <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#contact">Book Date</a></li>
                     </ul>
@@ -2880,6 +2881,7 @@
         });
         
         // Vlogs See More functionality
+        /*
         const seeMoreVlogsBtn = document.getElementById('seeMoreVlogs');
         const hiddenVlogs = document.querySelectorAll('.vlog-card.hidden');
         let vlogsVisible = false;
@@ -2899,6 +2901,7 @@
                 vlogsVisible = false;
             }
         });
+        */
         
         // WhatsApp form submission with validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -3006,79 +3009,42 @@ Thank you!`;
 
         // Gallery Lightbox Functionality - IMPROVED FOR MOBILE
         const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxTitle = document.getElementById('lightboxTitle');
-    const lightboxDescription = document.getElementById('lightboxDescription');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    let currentIndex = 0;
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    // Gallery data for lightbox
-    const galleryData = [
-        {
-            src: "image/Gallery9.jpg",
-            title: "Portrait Session",
-            description: "Creative portrait photography in natural light"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Wedding Day",
-            description: "Capturing the magic of a beautiful ceremony"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Commercial Shoot",
-            description: "Brand campaign for a luxury fashion label"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Studio Session",
-            description: "Recording and producing original music"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Corporate Event",
-            description: "Documenting a major product launch"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Wedding Details",
-            description: "Capturing the intricate details of a special day"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Film Production",
-            description: "Creating cinematic content for clients"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Aerial Views",
-            description: "Stunning drone photography of landscapes"
-        },
-        {
-            src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=600&q=80",
-            title: "Product Showcase",
-            description: "Professional product photography for e-commerce"
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDescription = document.getElementById('lightboxDescription');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        let currentIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        // Build gallery data from actual gallery items
+        const galleryData = Array.from(galleryItems).map(item => {
+            const img = item.querySelector('img');
+            const alt = img ? img.getAttribute('alt') : '';
+            return {
+                src: img ? img.getAttribute('src') : '',
+                title: alt || 'Gallery Image',
+                description: '© 2025 All Rights Reserved'
+            };
+        });
+        
+        // Open lightbox with specific image
+        function openLightbox(index) {
+            if (index < 0 || index >= galleryData.length) return;
+            currentIndex = index;
+            lightboxImage.src = galleryData[index].src;
+            lightboxTitle.textContent = galleryData[index].title;
+            lightboxDescription.textContent = galleryData[index].description;
+            lightbox.style.display = 'flex';
+            setTimeout(() => {
+                lightbox.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
-    ];
-    
-    // Open lightbox with specific image
-    function openLightbox(index) {
-        currentIndex = index;
-        lightboxImage.src = galleryData[index].src;
-        lightboxTitle.textContent = galleryData[index].title;
-        lightboxDescription.textContent = galleryData[index].description;
-        lightbox.style.display = 'flex';
-        setTimeout(() => {
-            lightbox.classList.add('active');
-        }, 10);
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    }
     
     // Close lightbox
     function closeLightbox() {
@@ -3101,12 +3067,14 @@ Thank you!`;
         openLightbox(currentIndex);
     }
     
-    // Add event listeners to gallery items
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            openLightbox(index);
+        // Add event listeners to gallery items
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // Use the actual index from data-index attribute if available, otherwise use array index
+                const itemIndex = item.getAttribute('data-index') ? parseInt(item.getAttribute('data-index')) : index;
+                openLightbox(itemIndex);
+            });
         });
-    });
     
     // Add event listeners to lightbox controls
     lightboxClose.addEventListener('click', closeLightbox);
